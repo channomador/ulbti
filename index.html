@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>울BTI 울릉 귀농귀촌 유형 테스트</title>
+<title>나의 울릉도 귀농귀촌 MBTI</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
@@ -18,7 +18,7 @@ body{font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smooth
 .wrap{max-width:520px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));padding-block:14px 40px}
 .top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:10px;border-bottom:3px solid var(--ink)}
 .top .t{font-family:var(--head);font-weight:800;font-size:15px;letter-spacing:-.3px}
-.top .t span{color:var(--soft);font-weight:700;font-size:12px;letter-spacing:1.5px;margin-left:6px}
+.top .t span{white-space:nowrap;color:var(--soft);font-weight:700;font-size:12px;letter-spacing:1.5px;margin-left:6px}
 .badge{font-family:var(--head);font-weight:900;font-size:13px;border:2px solid var(--ink);padding:3px 9px 4px;white-space:nowrap}
 .badge b{color:var(--terra)}
 h1,h2,h3{font-family:var(--head);font-weight:900;margin:0;text-wrap:balance}
@@ -28,8 +28,8 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--terra);outline-offs
 
 /* intro */
 .intro .pre{font-family:var(--head);font-weight:700;font-size:19px;margin:28px 0 16px}
-.intro h1{font-size:clamp(64px,21vw,104px);line-height:.95;letter-spacing:-.06em}
-.intro h1 em{font-style:normal;color:var(--terra)}
+.intro h1{font-size:clamp(46px,14vw,68px);line-height:1.02;letter-spacing:-.06em}
+.intro h1 em{font-style:normal;color:var(--terra);display:block;font-size:1.75em;line-height:.9;letter-spacing:-.05em;margin-top:4px}
 .intro .sub{font-family:var(--head);font-weight:800;font-size:21px;line-height:1.4;letter-spacing:-.5px;margin-top:14px}
 .axes{margin:26px 0 0;border-top:1.5px solid var(--ink)}
 .axes div{display:grid;grid-template-columns:30px 1fr 18px 1fr 30px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
@@ -109,7 +109,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--terra);outline-offs
 </head><body>
 
 <div class="wrap">
-  <div class="top"><div class="t">울릉군 귀농귀촌 아카데미<span>2026 OT</span></div><div class="badge"><b>●</b> 울BTI</div></div>
+  <div class="top"><div class="t">울릉군 귀농귀촌 아카데미<span>2026 OT</span></div><div class="badge"><b>●</b> MBTI</div></div>
   <main id="app"></main>
   <div class="foot">재미로 보는 테스트예요. 공식 MBTI® 검사와는 관계가 없어요.<br><b>주최·주관</b> 울릉군 농업기술센터 · <b>운영</b> 노마도르</div>
 </div>
@@ -186,8 +186,8 @@ function intro(){
   app.className="intro";
   app.innerHTML=`
   <div class="pre">울릉에 살면 나는 어떤 이웃일까?</div>
-  <h1>울<em>BTI</em></h1>
-  <div class="sub">울릉 귀농귀촌 유형 테스트</div>
+  <h1>나의 울릉도<br>귀농귀촌 <em>MBTI</em></h1>
+  <div class="sub">재미로 보는 울릉 이웃 유형 테스트</div>
   <div class="axes">${AX.map(a=>`<div><b>${a[0]}</b><span>${a[2]}</span><span>↔</span><span>${a[3]}</span><b>${a[1]}</b></div>`).join("")}</div>
   <div class="meta"><div>12문항 <span>· 약 3분</span></div><div>16유형 <span>· 울릉 캐릭터</span></div></div>
   <button class="go" id="start">시작하기 <i>→</i></button>
@@ -230,7 +230,7 @@ function result(code,cnt){
   app.className="res";
   const scores=cnt?`<div class="scores">${AX.map(a=>{const l=cnt[a[0]]||0,r=cnt[a[1]]||0;const lw=l>r;const dots=Array.from({length:3},(_,i)=>`<i class="${(i<l)===lw?"on":"off"}"></i>`).join("");return `<div class="sc"><div class="l ${l>r?"w":""}">${a[0]} ${a[2]}</div><div class="dots">${dots}</div><div class="r ${r>l?"w":""}">${a[3]} ${a[1]}</div></div>`}).join("")}</div>`:"";
   app.innerHTML=`
-  <div class="lab">${cnt?"나의 울BTI 유형":"울BTI 유형 보기"}</div>
+  <div class="lab">${cnt?"나의 울릉도 귀농귀촌 MBTI":"울릉도 귀농귀촌 MBTI 유형 보기"}</div>
   <div class="code"><h1>${code.split("").map(c=>`<span>${c}</span>`).join("")}</h1><div class="ico">${ICON[t.ic]}</div></div>
   <h2 class="name">${t.n}</h2>
   <div class="tag">${t.t}</div>
